@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+</head>
+<body>
+
+    <section class ="hero-section">
+        <h1>Expense Tracker Dashboard</h1>
+        <div class="cards">
+            <div class="card balance">
+                <h3>Total Balance</h3>
+                <p id="dashboard-balance">₱0</p>
+            </div>
+
+            <div class="card income">
+                <h3>Total Income</h3>
+                <p id="income">₱0</p>
+            </div>
+
+            <div class="card expense">
+                <h3>Total Expenses</h3>
+                <p id="expense">₱0</p>
+            </div>
+        </div>
+        <div class="recent">
+            <h2>Recent Transactions</h2>
+            <ul id="transaction-list"></ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="dashboard-title">
+            <h1>Expense Tracker</h1>
+        </div>
+
+        <input type="text" id="description" placeholder="Description">
+        <input type="number" id="amount" placeholder="Amount">
+
+        <select id="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+
+        <button onclick="addTransaction()">Add</button>
+
+        <h2>Balance: ₱<span id="tracker-balance">0</span></h2>
+
+        <ul id="transaction-list"></ul>
+    </section>
+
+
+
+    <script src="crud.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
