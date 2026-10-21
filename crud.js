@@ -3,7 +3,7 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
 // Display data when page loads
 displayTransactions();
-updateBalance();
+updateDashboard();
 
 // Update Dashboard
 function updateDashboard(){
@@ -19,9 +19,10 @@ function updateDashboard(){
         }
     }); 
 
-    document.getElementById("income").textContent = `₱${totalIncome}`;
-    document.getElementById("expense").textContent = `₱${totalExpense}`;
-    document.getElementById("dashboard-balance").textContent = `₱${totalIncome - totalExpense}`;
+    const balance = totalIncome - totalExpense;
+    document.getElementById("income").textContent = `₱${totalIncome.toFixed(2)}`;
+    document.getElementById("expense").textContent = `₱${totalExpense.toFixed(2)}`;
+    document.getElementById("dashboard-balance").textContent = `₱${balance.toFixed(2)}`;
 }
 
 // Add data
@@ -46,11 +47,7 @@ function addTransaction() {
     
     saveData();
     displayTransactions();
-    updateBalance();
     updateDashboard();
-
-    document.getElementById("description").value = "";
-    document.getElementById("amount").value = "";
 }
 
 // display data
@@ -58,15 +55,21 @@ function displayTransactions() {
     const list = document.getElementById("transaction-list");
     list.innerHTML = "";
 
-    transactions.forEach(transaction => { const li = document.createElement("li");
-        li.innerHTML = `${transaction.description}
-                        (${transaction.type})
-                        ₱${transaction.amount}
-                        <button onclick="deleteTransaction(${transaction.id})">
-                            Delete
-                        </button>`;
+    transactions.forEach(transaction => {
+        const li = document.createElement("li");
+
+        li.className = `transaction-card ${transaction.type === "income" ? "income-card": "expense-card"}`;
+        li.innerHTML = `<div class="transaction-info">
+                            <h6>${transaction.description}</h6>
+                            <small>${transaction.type}</small>
+                        </div>
+                        <div class="transaction-amount">
+                            ${transaction.type === "income" ? "+" : "-"}
+                            ₱${transaction.amount}
+                        </div>
+                        <button class="delete-btn" onclick="deleteTransaction(${transaction.id})">&#10060</button>`;
         list.appendChild(li);
-        });
+    });
 }
 
 // Delete data
@@ -75,22 +78,7 @@ function deleteTransaction(id) {
 
     saveData();
     displayTransactions();
-    updateBalance();
-}
-
-// Update data
-function updateBalance() {
-    let balance = 0;
-
-    transactions.forEach(transaction => { 
-        if (transaction.type === "income") {
-            balance += transaction.amount;
-        } else {
-            balance -= transaction.amount;
-        }
-    });
-
-    document.getElementById("tracker-balance").textContent = balance;
+    updateDashboard();
 }
 
 function saveData() {

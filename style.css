@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-card {
+    width: 100%;
+    max-width: 900px;
+    background: linear-gradient(135deg, #114727, #167549);
+    color: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.dashboard-card h1 {
+    font-size: 3rem;
+    margin: 10px 0 30px;
+    font-weight: bold;
+}
+
+.dashboard-card h5 {
+    color: #00ff88c9;
+}
+
+.summary {
+    display: flex;
+    gap: 20px;
+}
+
+.income-box, .expense-box {
+    flex: 1;
+    background-color: rgba(255,255,255,0.15);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.income-box p, .expense-box p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.add-button {
+    background: linear-gradient(135deg, #114727, #167549);
+    border: none;
+    border-radius: .5em;
+    padding: 12px 17px;
+}
+
+#transaction-list {
+    list-style: none;
+    padding: 0;
+}
+
+.transaction-card {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    position: relative;
+    transition: all .3s ease;
+}
+
+.transaction-card:hover {
+    transform: translateY(-1.5px);
+}
+
+.transaction-info h6 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.transaction-info small {
+    color: #666;
+}
+
+.transaction-amount {
+    margin-left: 21em;
+    font-weight: 600;
+}
+
+
+.income-card {
+    background: #a3dfbc9d;background: #a3dfbc9d;
+    border-right: 4px solid #198754;
+}
+
+.income-card, .transaction-amount {
+    color: #135737;
+}
+
+.expense-card {
+    background: #fdecec;
+    border-right: 4px solid #dc3545;
+}
+
+.expense-card .transaction-amount {
+    color: #dc3545;
+}
+
+.delete-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 16px;
+    background: none;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%) scale(.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+}
+
+.transaction-card:hover .delete-btn{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+}
+
+.delete-btn:hover {
+    background-color: #c2898fde;
+}
