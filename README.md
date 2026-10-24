@@ -1,2 +1,2 @@
 # Expense-Tracker
-using html, css, js, and bootscrap
+using html, css, js, and bootstrap
